@@ -127,15 +127,20 @@ int 	particionMasiva			(Arbol* arbol, int condicion,int* id,Imagen* imagen);
 /*
  * Funcion esHoja
  * funcion que verifica si un arbol es hoja, esto quiere decir que no tiene hijos
- * @param Arbol* arbol 
+ * @param Arbol* arbol, puntero a arbol el cual se analizara
 */
 int 	esHoja					(Arbol* arbol);
 /*
-
+ * Funcion recorrido
+ * funcion que recorre un arbol y va mostrando los datos contenidos en el
+ * @param Arbol* arbol, arbol que se recorrera
 */
 void 	recorrido				(Arbol* arbol);
 /*
-
+ * Funcion esNumero
+ * funcion que verifica si un string es un numero valido
+ * @param char* numero, cadena de caracteres el cual se verificara
+ * @return int, 1 en aso de ser un numero valido, 0 en caso de ser caulquier otra cosa no valida.
 */
 int 	esNumero				(char* numero);
 
