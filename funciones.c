@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "estructuras.h"
+#include "funciones.h"
 /*
  * Funcion existsFile
 */
@@ -233,6 +234,46 @@ void pintar(Arbol* hoja,Imagen* imagen,int* id){
 		}
 	}
 }
+
+/*
+ * Funcion uniformidadDosImagenes
+*/
+int uniformidadDosImagenes (Imagen* img1,Imagen* img2){
+	int max,min;
+	if (img1->max>img2->max){
+		max = img1->max;
+	}
+	else{
+		max = img2->max;
+	}
+	if (img1->min<img2->min){
+		min = img1->min;
+	}
+	else{
+		min = img2->min;
+	}
+	return max-min;
+}
+/*
+ * Funcion uniformidadTresImagenes
+*/
+int uniformidadTresImagenes(Imagen* img1,Imagen* img2,Imagen* img3){
+	int max = img1->max;
+	int min = img1->min; 
+	if (max < img2->max){
+		max = img2->max;
+	}
+	if (max < img3->max){
+		max = img3->max;
+	}
+	if (min >img2->min){
+		min = img2->min;
+	}
+	if (min >img3->min){
+		min = img3->min;
+	}
+	return max-min;
+}
 /*
  * Funcion pintarGrupos
 */
@@ -285,45 +326,6 @@ void pintarGrupos(Arbol* arbol, int condicion,int* id,Imagen* imagen){
 
 }
 
-/*
- * Funcion uniformidadDosImagenes
-*/
-int uniformidadDosImagenes (Imagen* img1,Imagen* img2){
-	int max,min;
-	if (img1->max>img2->max){
-		max = img1->max;
-	}
-	else{
-		max = img2->max;
-	}
-	if (img1->min<img2->min){
-		min = img1->min;
-	}
-	else{
-		min = img2->min;
-	}
-	return max-min;
-}
-/*
- * Funcion uniformidadTresImagenes
-*/
-int uniformidadTresImagenes(Imagen* img1,Imagen* img2,Imagen* img3){
-	int max = img1->max;
-	int min = img1->min; 
-	if (max < img2->max){
-		max = img2->max;
-	}
-	if (max < img3->max){
-		max = img3->max;
-	}
-	if (min >img2->min){
-		min = img2->min;
-	}
-	if (min >img3->min){
-		min = img3->min;
-	}
-	return max-min;
-}
 /*
  * Funcion particionMasiva
 */
@@ -404,13 +406,25 @@ int esNumero(char* numero){
     	return 0;
     }
 }
+void titulo(){
+	printf(" _               _               _  _   \n");
+	printf("| |       __ _  | |__           | || |  \n");
+	printf("| |      / _` | | '_ \\          | || |_ \n");
+	printf("| |___  | (_| | | |_) |  _      |__   _|\n");
+	printf("|_____|  \\__,_| |_.__/  (_)        |_| \n");
+	printf("\n\n\n");
+}
+
+void crearArchivo(Imagen* imagen,char* nameFile){
+		 
+	FILE* archivo = fopen(nameFile,"w");
+	int i,j;
+	for (i=0;i<imagen->dimension;i++){
+		for (j=0;j<imagen->dimension;j++){
+			fprintf(archivo, "%d ",imagen->matriz[i][j] );
+		}
+		fprintf(archivo, "\n" );
+	}
+	fclose(archivo);
+}
        
-
-
-
-
-
-
-
-
-

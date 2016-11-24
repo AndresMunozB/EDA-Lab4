@@ -14,7 +14,7 @@ int main(){
 	Imagen* salida=NULL;
 	int criterio;
 	int id = 0;
-
+	titulo();
 	char nameFile[255];
 	int opcion=0;
 	do{
@@ -23,7 +23,8 @@ int main(){
 		printf("3) Crear arbol segun criterio de uniformidad. \n");
 		printf("4) Mostrar recorrido del arbol.\n");
 		printf("5) Mostrar regiones uniformes de la imagen.\n");
-		printf("6) Salir.\n");
+		printf("6) Guardar archivo con las regiones uniformes de la imagen.\n");
+		printf("7) Salir.\n");
 
 		printf("\nIngrese una opcion: ");
 		fflush(stdin);
@@ -66,7 +67,7 @@ int main(){
 				if(imagen!=NULL){
 					char buffer[255];
 					printf("\nIngrese criterio de uniformidad: ");
-					scanf("%s", &buffer);
+					scanf("%s", buffer);
 					if (esNumero(buffer)){
 						criterio = atoi(buffer);
 						arbol=(Arbol*)inicializarArbol();
@@ -106,10 +107,51 @@ int main(){
 					printf("\nSe necesita cargar un arbol previamente.\n\n");
 				}
 				break;
+			case 6:
+				if (salida!= NULL){
+					char nombre[255];
+					char valor[200];
+					
+					printf("\nIngrese un nombre para el archivo sin extencion: ");
+					fflush(stdin);
+					scanf("%s", nombre);
+					strcpy(nombre ,strcat(nombre,".txt"));
+					if (existsFile(nombre)){
+						do{
+							printf("El archivo ya existe, desea sobreescribir? (s/n): " );
+							fflush(stdin);		
+							scanf("%s", valor);
+							if(strcmp(valor,"s") && strcmp(valor,"S") && strcmp(valor,"n") && strcmp(valor,"N")){
+								printf("Respuesta incorrecta\n");
+							}
+						}while(strcmp(valor,"s") && strcmp(valor,"S") && strcmp(valor,"n") && strcmp(valor,"N"));
+
+						if (!strcmp(valor,"s") || !strcmp(valor,"S")){
+							crearArchivo(salida,nombre);
+							printf("El archivo ha sido guardado.\n\n");
+						}
+						else{
+							printf("El archivo NO ha sido guardado.\n\n");
+						}
+						
+					}
+					else{
+						crearArchivo(salida,nombre);
+						printf("El archivo ha sido guardado.\n\n");
+					}
+					
+					
+					
+				}
+				else{
+					printf("Se necesita crear un arbol.\n\n");
+				}
+
+				break;
 			
 
 		}
-	}while(opcion!=6);
+	}while(opcion!=7);
 	printf("El programa ha finalizado.\n");
 	
 

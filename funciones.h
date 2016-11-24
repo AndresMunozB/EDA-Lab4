@@ -31,13 +31,13 @@ int** 	inicializarMatriz 		(int dimension);
 */
 void 	showMatriz				(int** matriz,int dimension);
 
-
 /*
  * Funcion inicializarImagen
  * funcion que inicializa una imagen con cantidad de filas y columnas igual a dimension entregada
  * @param int dimension, refiere a la dimension de la imagen (dimension x dimension), "imagen cuadrada"
  * @return punter a la estructura Imagen inicializada
 */
+
 Imagen* inicializarImagen		(int dimension);
 /*
  * Funcion showImagen
@@ -143,6 +143,21 @@ void 	recorrido				(Arbol* arbol);
  * @return int, 1 en aso de ser un numero valido, 0 en caso de ser caulquier otra cosa no valida.
 */
 int 	esNumero				(char* numero);
+/*
+ * Funcion titulo
+ * funcion que imprime en pantalla el titulo del programa
+*/
+void 	titulo					();
+/*
+ * Funcion crearArchivo 
+ * funcion para guardar el resultado del programa, esto quiere decir que crea un archivo con el nombre 
+ * ingresado en el cual guarda lo que esta en la matriz de la imagen (resultado)
+ * @param Imagen* imagen, char* nameFile, imagen refiere a la imagen del resultado, nameFile refiere al
+ * nombre con el cual e guardara el archivo.
+*/
+void 	crearArchivo			(Imagen* imagen,char* nameFile);
+
+
 
 
 
