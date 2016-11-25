@@ -136,8 +136,9 @@ Imagen* createImagen(char* nameFile){
 	}
 	//showImagen(imagen);
 	actualizarInfo(imagen);
-	return imagen;
 	fclose(file);
+	return imagen;
+	
 }
 
 
@@ -222,9 +223,9 @@ void particionarArbol(Arbol* arbol){
 }
 
 /*
- * Funcion pintar
+ * Funcion marcar
 */
-void pintar(Arbol* hoja,Imagen* imagen,int* id){
+void marcar(Arbol* hoja,Imagen* imagen,int* id){
 	int i,j;
 	int fil = hoja->fil;
 	int col = hoja->col;
@@ -275,52 +276,52 @@ int uniformidadTresImagenes(Imagen* img1,Imagen* img2,Imagen* img3){
 	return max-min;
 }
 /*
- * Funcion pintarGrupos
+ * Funcion marcarGrupos
 */
-void pintarGrupos(Arbol* arbol, int condicion,int* id,Imagen* imagen){
+void marcarGrupos(Arbol* arbol, int condicion,int* id,Imagen* imagen){
 	if (uniformidadDosImagenes(arbol->hijos[0]->imagen,arbol->hijos[2]->imagen)<=condicion ){
-		pintar(arbol->hijos[0],imagen,id);
-		pintar(arbol->hijos[2],imagen,id);
+		marcar(arbol->hijos[0],imagen,id);
+		marcar(arbol->hijos[2],imagen,id);
 		*id+=1;
 	}
 	if (uniformidadDosImagenes(arbol->hijos[1]->imagen,arbol->hijos[3]->imagen)<=condicion ){
-		pintar(arbol->hijos[1],imagen,id);
-		pintar(arbol->hijos[3],imagen,id);
+		marcar(arbol->hijos[1],imagen,id);
+		marcar(arbol->hijos[3],imagen,id);
 		*id+=1;
 	}
 	if (uniformidadDosImagenes(arbol->hijos[0]->imagen,arbol->hijos[1]->imagen)<=condicion ){
-		pintar(arbol->hijos[0],imagen,id);
-		pintar(arbol->hijos[1],imagen,id);
+		marcar(arbol->hijos[0],imagen,id);
+		marcar(arbol->hijos[1],imagen,id);
 		*id+=1;
 	}
 	if (uniformidadDosImagenes(arbol->hijos[2]->imagen,arbol->hijos[3]->imagen)<=condicion ){
-		pintar(arbol->hijos[2],imagen,id);
-		pintar(arbol->hijos[3],imagen,id);
+		marcar(arbol->hijos[2],imagen,id);
+		marcar(arbol->hijos[3],imagen,id);
 		*id+=1;
 	}
 
 	if (uniformidadTresImagenes(arbol->hijos[0]->imagen,arbol->hijos[2]->imagen,arbol->hijos[3]->imagen)<=condicion ){
-		pintar(arbol->hijos[0],imagen,id);
-		pintar(arbol->hijos[2],imagen,id);
-		pintar(arbol->hijos[3],imagen,id);	
+		marcar(arbol->hijos[0],imagen,id);
+		marcar(arbol->hijos[2],imagen,id);
+		marcar(arbol->hijos[3],imagen,id);	
 		*id+=1;
 	}
 	if (uniformidadTresImagenes(arbol->hijos[0]->imagen,arbol->hijos[1]->imagen,arbol->hijos[3]->imagen)<=condicion){
-		pintar(arbol->hijos[0],imagen,id);
-		pintar(arbol->hijos[1],imagen,id);
-		pintar(arbol->hijos[3],imagen,id);	
+		marcar(arbol->hijos[0],imagen,id);
+		marcar(arbol->hijos[1],imagen,id);
+		marcar(arbol->hijos[3],imagen,id);	
 		*id+=1;
 	}
 	if (uniformidadTresImagenes(arbol->hijos[0]->imagen,arbol->hijos[1]->imagen,arbol->hijos[2]->imagen)<=condicion ){
-		pintar(arbol->hijos[0],imagen,id);
-		pintar(arbol->hijos[1],imagen,id);
-		pintar(arbol->hijos[2],imagen,id);	
+		marcar(arbol->hijos[0],imagen,id);
+		marcar(arbol->hijos[1],imagen,id);
+		marcar(arbol->hijos[2],imagen,id);	
 		*id+=1;
 	}
 	if (uniformidadTresImagenes(arbol->hijos[1]->imagen,arbol->hijos[3]->imagen,arbol->hijos[2]->imagen)<=condicion ){
-		pintar(arbol->hijos[1],imagen,id);
-		pintar(arbol->hijos[3],imagen,id);
-		pintar(arbol->hijos[2],imagen,id);	
+		marcar(arbol->hijos[1],imagen,id);
+		marcar(arbol->hijos[3],imagen,id);
+		marcar(arbol->hijos[2],imagen,id);	
 		*id+=1;
 	}
 
@@ -339,12 +340,12 @@ int particionMasiva(Arbol* arbol, int condicion,int* id,Imagen* imagen){
 		particionMasiva(arbol->hijos[2],condicion,id,imagen);
 		particionMasiva(arbol->hijos[3],condicion,id,imagen);
 
-		pintarGrupos(arbol,condicion,id,imagen);
+		marcarGrupos(arbol,condicion,id,imagen);
 		
 	}
-	else{
+	else{	
 		if(esHoja(arbol)){
-		pintar(arbol,imagen,id);
+		marcar(arbol,imagen,id);
 		*id+=1;
 		}
 	}

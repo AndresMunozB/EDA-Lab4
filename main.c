@@ -1,4 +1,5 @@
 #include "funciones.h"
+#include "funciones.c"
 #include "estructuras.h"
 #include <stdio.h>
 #include <string.h>
@@ -118,7 +119,7 @@ int main(){
 					strcpy(nombre ,strcat(nombre,".txt"));
 					if (existsFile(nombre)){
 						do{
-							printf("El archivo ya existe, desea sobreescribir? (s/n): " );
+							printf("El archivo ya existe, desea sobrescribir? (s/n): " );
 							fflush(stdin);		
 							scanf("%s", valor);
 							if(strcmp(valor,"s") && strcmp(valor,"S") && strcmp(valor,"n") && strcmp(valor,"N")){

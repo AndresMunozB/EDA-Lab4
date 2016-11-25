@@ -84,22 +84,22 @@ void 	cargarImagenArbol		(Arbol* arbol,Imagen* imagen);
 */
 void 	particionarArbol		(Arbol* arbol);
 /*
- * Funcion pintar
+ * Funcion marcar
  * funcion deja marcado con un numero una imagen las casillas de una matriz correspondientes al arbol entregado
  * @param Arbol* hoja, Imagen* imagen, int* id. hoja refiere a un putnero a arbol el cual se analizara y marcara 
  * dentro de la matriz de la imagen con el numero entregado a traves de paso por refenrecia en id.
  * 
 */
-void 	pintar 					(Arbol* hoja,Imagen* imagen,int* id);
+void 	marcar 					(Arbol* hoja,Imagen* imagen,int* id);
 /*
- * Funcion pintarGrupos 
+ * Funcion marcarGrupos 
  * funcion que marca los los grupos de los hijos de un arbol, en la matriz de la imagen entregada,
  * en otras palabras fuciona todas las particiones que cumplen con la condicion
  * @param Arbol* arbol, int condicion, int* id, Imagen* imagen. arbol refiere al arbol a analizar,
  * condicion refiere a la condicion que deben cumplir para funcionarse las partes, id refiere al numero
  * con el cual se marcara el grupo dentro de la matriz de la imagen entregada.
 */
-void 	pintarGrupos 			(Arbol* arbol, int condicion,int* id,Imagen* imagen);
+void 	marcarGrupos 			(Arbol* arbol, int condicion,int* id,Imagen* imagen);
 /*
  * Funcion uniformidadDosImagenes
  * funcion que entrega la uniformidad si esque se unen dos imagenes.
